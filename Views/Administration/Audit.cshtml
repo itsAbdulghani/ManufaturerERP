@@ -1,0 +1,3 @@
+@model IEnumerable<ManufacturerERP.Models.AuditLog>
+@{ViewData["Title"]="Audit Trail";}
+<h2 class="mb-4">Audit Trail</h2><div class="card"><table class="table mb-0"><thead><tr><th>When</th><th>Action</th><th>Entity</th><th>Description</th></tr></thead><tbody>@foreach(var log in Model){<tr><td>@log.Timestamp.ToLocalTime().ToString("dd MMM yyyy HH:mm")</td><td><span class="badge text-bg-light">@log.Action</span></td><td>@log.EntityName #@log.EntityId</td><td>@log.Description</td></tr>}</tbody></table></div>

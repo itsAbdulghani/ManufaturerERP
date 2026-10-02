@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Manufacturer ERP</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ManufacturerERP.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="erp-shell">
+        <aside class="erp-sidebar" id="erpSidebar">
+            <div class="sidebar-brand"><span class="brand-mark">M</span><span>Manufacturer <strong>ERP</strong></span><button type="button" class="btn-close btn-close-white d-lg-none" aria-label="Close menu" onclick="document.body.classList.remove('sidebar-open')"></button></div>
+            <nav class="sidebar-nav">
+                <span class="nav-section">WORKSPACE</span>
+                <a asp-controller="Home" asp-action="Index"><span>⌂</span> Dashboard</a>
+                <span class="nav-section">MASTERS</span>
+                <a href="/Masters/customers"><span>◉</span> Customers</a><a href="/Masters/suppliers"><span>◉</span> Suppliers</a><a href="/Masters/products"><span>◈</span> Products / Items</a><a href="/Masters/units"><span>↔</span> Units of Measurement</a><a href="/Masters/warehouses"><span>▣</span> Warehouses</a>
+                <span class="nav-section">PROCUREMENT</span>
+                <a asp-controller="Procurement" asp-action="Index"><span>▤</span> Purchase Orders</a><a asp-controller="Procurement" asp-action="Inventory"><span>▦</span> Raw Material Inventory</a>
+                <span class="nav-section">MANUFACTURING</span><a asp-controller="Production" asp-action="Index"><span>⚒</span> Production Orders</a>
+                <span class="nav-section">ADMINISTRATION</span>
+                <a asp-controller="Company" asp-action="Edit"><span>⚙</span> Company Settings</a><a asp-controller="Administration" asp-action="Users"><span>♙</span> Users &amp; Roles</a><a asp-controller="Administration" asp-action="Audit"><span>◷</span> Audit Trail</a>
+                <span class="nav-section">SYSTEM</span><a asp-controller="Home" asp-action="Privacy"><span>ⓘ</span> Privacy</a>
+                <span class="nav-section">SALES</span><a asp-controller="Sales" asp-action="Index"><span>▣</span> Sales Orders</a><a asp-controller="Sales" asp-action="Invoices"><span>▤</span> Customer Receivables</a><a asp-controller="Sales" asp-action="Payments"><span>↔</span> Customer Payments</a><a asp-controller="Sales" asp-action="Reports"><span>▦</span> Sales Reports</a>
+            </nav>
+        </aside>
+        <div class="erp-main">
+            <header class="erp-topbar"><button class="sidebar-toggle d-lg-none" type="button" aria-label="Open navigation" onclick="document.body.classList.toggle('sidebar-open')">☰</button><div class="topbar-title">@ViewData["Title"]</div><partial name="_LoginPartial" /></header>
+            <main role="main" class="erp-content">@RenderBody()</main>
+            <footer class="erp-footer">&copy; 2026 Abdul Ghani</footer>
+        </div>
+    </div><div class="sidebar-backdrop" onclick="document.body.classList.remove('sidebar-open')"></div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
